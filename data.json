@@ -1,0 +1,148 @@
+{
+  "person": {
+    "name": "Alberto Sánchez Pérez",
+    "headline": "NLP / GenAI Researcher & Applied AI Engineer",
+    "location": "Madrid, Spain",
+    "links": {
+      "email": "mailto:you@domain.com",
+      "github": "https://github.com/elalber2000",
+      "arxiv": "https://arxiv.org/abs/2503.11664",
+      "cv_pdf": "./CV_AlbertoSanchez_en.pdf"
+    }
+  },
+  "profile": "Data Scientist and AI Engineer specialized in NLP and GenAI. I bridge applied research (NAACL’25, SEPLN’23) with industry delivery, leading Fortune 500 projects and owning end-to-end data/AI pipelines (ingestion, preprocessing, model tuning, deployment). Proficient in GenAI technologies, classic ML and MLOps.",
+  "skill_groups": [
+    {
+      "topic": "genai",
+      "skills": ["LLMs", "Fine-Tuning", "Hugging Face", "RAG", "Agents"]
+    },
+    {
+      "topic": "ml/dl",
+      "skills": ["ML", "DL", "PyTorch", "Transformers", "NER"]
+    },
+    {
+      "topic": "mlops/data",
+      "skills": ["SQL", "Alembic", "DBT", "CI/CD", "Git", "Docker", "AWS", "Airflow", "FastAPI"]
+    },
+    {
+      "topic": "research",
+      "skills": ["Relational Data", "Knowledge Graphs", "Synthetic Data", "Information Extraction"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "stopslop",
+      "title": "StopSlop",
+      "one_liner": "Chrome extension for low-quality site detection; real-time classification.",
+      "links": {
+        "repo": "https://github.com/elalber2000/stop_slop"
+      },
+      "skills": ["ML", "DL", "Python", "Web Scraping"],
+      "highlights": [
+        "Automated web scraping feeding a real-time classifier.",
+        "Custom hyper-efficient FastText-like implementation in NumPy for low-latency inference."
+      ]
+    },
+    {
+      "id": "mini-snowflake",
+      "title": "mini_snowflake",
+      "one_liner": "Warehouse-style mini system (engineering proof repo).",
+      "links": {
+        "repo": "https://github.com/elalber2000/mini_snowflake"
+      },
+      "skills": ["SQL", "Data Engineering", "Pipelines"],
+      "highlights": [
+        "Systems-oriented build emphasizing clean data flows and queryable structure."
+      ]
+    },
+    {
+      "id": "naacl-2025-agents",
+      "title": "Agentic Insight Generation over Relational Data (NAACL’25)",
+      "one_liner": "LLM+agent approach to generate analysis insights from relational databases; productionized.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2503.11664"
+      },
+      "skills": ["Agents", "LLMs", "SQL"],
+      "highlights": [
+        "Deployed to production; reduced operational costs by 99.6% on a production pipeline."
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "org": "Aily Labs",
+      "location": "Madrid, Spain",
+      "role": "Mid Data Scientist",
+      "dates": "Aug 2025 – Present",
+      "bullets": [
+        "Delivered GenAI features for Fortune 500 clients: large-scale LLM document extraction for legal contracts and entity matching across data sources."
+      ],
+      "skills": ["LLMs", "Information Extraction", "Data Engineering"]
+    },
+    {
+      "org": "Aily Labs",
+      "location": "Madrid, Spain",
+      "role": "Junior Data Scientist",
+      "dates": "Sep 2024 – Aug 2025",
+      "bullets": [
+        "Designed procurement document-processing pipelines, replacing RAG approaches with a MapReduce design that improved reliability and scalability.",
+        "Led development of a Competitive Intelligence app (P&L forecasting, market insights, asset-buy recommendations); database and pipelines design and orchestration, reducing runtime from 60 minutes to under 1 minute.",
+        "Mentored an intern, coordinated sprints and code reviews, and regularly presented progress to C-level stakeholders."
+      ],
+      "skills": ["RAG", "Data Engineering", "SQL", "DBT", "Airflow", "Docker", "CI/CD"]
+    },
+    {
+      "org": "Aily Labs",
+      "location": "Madrid, Spain",
+      "role": "Research Assistant",
+      "dates": "Mar 2024 – Sep 2024",
+      "bullets": [
+        "Main author of NAACL 2025 paper on using agent-based systems to generate insights from relational databases; deployed to production and reduced operational costs by 99.6% on a production pipeline."
+      ],
+      "skills": ["Agents", "LLMs", "SQL"]
+    },
+    {
+      "org": "Ontology Engineering Group (UPM)",
+      "location": "Madrid, Spain",
+      "role": "Research Assistant",
+      "dates": "Sep 2021 – Jul 2022",
+      "bullets": [
+        "Co-authored synthetic data generation from KG data (WidAug), boosting F1 by 20% for low-resource NER.",
+        "Developed a combined NER + machine translation system for low-latency applications, reducing costs by 40%."
+      ],
+      "skills": ["Knowledge Graphs", "Synthetic Data", "NER"]
+    }
+  ],
+  "education": [
+    {
+      "school": "Eurecom",
+      "location": "Sophia Antipolis, France",
+      "degree": "MSc in Data Science",
+      "dates": "Sep 2022 – Jul 2024"
+    },
+    {
+      "school": "Polytechnic University of Madrid",
+      "location": "Madrid, Spain",
+      "degree": "BSc in Mathematics and Computer Science",
+      "dates": "Sep 2018 – Jul 2022"
+    }
+  ],
+  "publications": [
+    {
+      "venue": "NAACL 2025",
+      "role": "Main author",
+      "title": "An LLM-Based Approach for Insight Generation in Data Analysis",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2503.11664"
+      },
+      "skills": ["Agents", "LLMs", "SQL"]
+    },
+    {
+      "venue": "SEPLN 2023",
+      "role": "Co-author",
+      "title": "Data augmentation for named entity recognition using Wikidata (WidAug)",
+      "links": {},
+      "skills": ["NER", "Knowledge Graphs", "Synthetic Data"]
+    }
+  ]
+}
