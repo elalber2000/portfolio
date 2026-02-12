@@ -33,8 +33,6 @@ const setSkillsToURL = (skills) => {
 const pickAccent = () => {
   const c = ACCENTS[Math.floor(Math.random() * ACCENTS.length)];
   document.documentElement.style.setProperty("--accent", c);
-  const info = document.getElementById("accentInfo");
-  info.textContent = `accent=${c.toLowerCase()}`;
 };
 
 const el = (tag, attrs = {}, children = []) => {
@@ -42,8 +40,7 @@ const el = (tag, attrs = {}, children = []) => {
   for (const [k, v] of Object.entries(attrs)) {
     if (k === "class") n.className = v;
     else if (k === "dataset") Object.assign(n.dataset, v);
-    else if (k.startsWith("on") && typeof v === "function")
-      n.addEventListener(k.slice(2), v);
+    else if (k.startsWith("on") && typeof v === "function") n.addEventListener(k.slice(2), v);
     else n.setAttribute(k, v);
   }
   for (const ch of children) n.append(ch);
@@ -57,6 +54,23 @@ const toggleSkill = (selected, s) => {
   return has ? selected.filter((x) => x !== s) : selected.concat([s]);
 };
 
+/* ---- ordering helpers (latest → earliest) ----
+   The JSON can already be in order; this provides stability if you edit later. */
+const parseEndYear = (dates) => {
+  const d = String(dates || "").toLowerCase();
+  if (d.includes("present")) return 9999;
+  const m = d.match(/(\d{4})\s*$/);
+  if (m) return Number(m[1]);
+  const all = d.match(/(\d{4})/g);
+  if (!all) return -1;
+  return Number(all[all.length - 1]);
+};
+
+const sortLatestFirst = (items, key) => {
+  const arr = Array.isArray(items) ? items.slice() : [];
+  return arr.sort((a, b) => parseEndYear(b[key]) - parseEndYear(a[key]));
+};
+
 const renderSkillsGrouped = (groups, selected, onToggle) => {
   const host = document.getElementById("skillsGroups");
   host.innerHTML = "";
@@ -67,11 +81,21 @@ const renderSkillsGrouped = (groups, selected, onToggle) => {
 
     g.skills.forEach((rawSkill) => {
       const s = slug(rawSkill);
-      const a = el("a", { href: `?skill=${encodeURIComponent(s)}`, class: "skill", dataset: { selected: selected.includes(s) ? "true" : "false" } }, [text(rawSkill)]);
+      const a = el(
+        "a",
+        {
+          href: `?skill=${encodeURIComponent(s)}`,
+          class: "skill",
+          dataset: { selected: selected.includes(s) ? "true" : "false" }
+        },
+        [text(rawSkill)]
+      );
+
       a.addEventListener("click", (e) => {
         e.preventDefault();
         onToggle(s);
       });
+
       list.appendChild(a);
     });
 
@@ -105,6 +129,7 @@ const renderProjects = (projects, selected) => {
     if (p.links?.repo) links.push(el("a", { href: p.links.repo, target: "_blank", rel: "noreferrer" }, [text("repo")]));
     if (p.links?.demo) links.push(el("a", { href: p.links.demo, target: "_blank", rel: "noreferrer" }, [text("demo")]));
     if (p.links?.writeup) links.push(el("a", { href: p.links.writeup, target: "_blank", rel: "noreferrer" }, [text("writeup")]));
+    if (p.links?.arxiv) links.push(el("a", { href: p.links.arxiv, target: "_blank", rel: "noreferrer" }, [text("arxiv")]));
 
     const kv = el("div", { class: "kv" }, [
       text("links: "),
@@ -118,14 +143,15 @@ const renderProjects = (projects, selected) => {
       ...(p.skills || []).map((t) => el("span", { class: "tag" }, [text(t)]))
     ]);
 
-    host.appendChild(el("div", { class: "block" }, [
-      text(":: "),
-      head,
-      kv,
-      bullets,
-      tags,
-      el("div", { class: "ascii" }, [text("  ───────────────────────────────────────────────────────────────────────────")])
-    ]));
+    host.appendChild(
+      el("div", { class: "block" }, [
+        text(":: "),
+        head,
+        kv,
+        bullets,
+        tags,
+      ])
+    );
   });
 };
 
@@ -133,7 +159,9 @@ const renderExperience = (items) => {
   const host = document.getElementById("experienceList");
   host.innerHTML = "";
 
-  items.forEach((x) => {
+  const ordered = sortLatestFirst(items, "dates");
+
+  ordered.forEach((x) => {
     const head = el("div", { class: "block-head" }, [
       el("div", { class: "block-title" }, [text(`${x.org} :: ${x.role}`)]),
       el("div", { class: "block-meta" }, [text(`${x.location} · ${x.dates}`)])
@@ -146,13 +174,14 @@ const renderExperience = (items) => {
       ...(x.skills || []).map((t) => el("span", { class: "tag" }, [text(t)]))
     ]);
 
-    host.appendChild(el("div", { class: "block" }, [
-      text(":: "),
-      head,
-      bullets,
-      tags,
-      el("div", { class: "ascii" }, [text("  ───────────────────────────────────────────────────────────────────────────")])
-    ]));
+    host.appendChild(
+      el("div", { class: "block" }, [
+        text(":: "),
+        head,
+        bullets,
+        tags,
+      ])
+    );
   });
 };
 
@@ -160,7 +189,9 @@ const renderEducation = (items) => {
   const host = document.getElementById("educationList");
   host.innerHTML = "";
 
-  items.forEach((x) => {
+  const ordered = sortLatestFirst(items, "dates");
+
+  ordered.forEach((x) => {
     const head = el("div", { class: "block-head" }, [
       el("div", { class: "block-title" }, [text(x.school)]),
       el("div", { class: "block-meta" }, [text(`${x.location} · ${x.dates}`)])
@@ -168,12 +199,13 @@ const renderEducation = (items) => {
 
     const body = el("div", { class: "kv" }, [text(`degree: ${x.degree}`)]);
 
-    host.appendChild(el("div", { class: "block" }, [
-      text(":: "),
-      head,
-      body,
-      el("div", { class: "ascii" }, [text("  ───────────────────────────────────────────────────────────────────────────")])
-    ]));
+    host.appendChild(
+      el("div", { class: "block" }, [
+        text(":: "),
+        head,
+        body,
+      ])
+    );
   });
 };
 
@@ -181,6 +213,7 @@ const renderPubs = (items) => {
   const host = document.getElementById("pubList");
   host.innerHTML = "";
 
+  // publications are usually already ordered; leave as-is unless you add dates later
   items.forEach((p) => {
     const head = el("div", { class: "block-head" }, [
       el("div", { class: "block-title" }, [text(`${p.venue} :: ${p.role}`)]),
@@ -202,13 +235,14 @@ const renderPubs = (items) => {
       ...(p.skills || []).map((t) => el("span", { class: "tag" }, [text(t)]))
     ]);
 
-    host.appendChild(el("div", { class: "block" }, [
-      text(":: "),
-      head,
-      kv,
-      tags,
-      el("div", { class: "ascii" }, [text("  ───────────────────────────────────────────────────────────────────────────")])
-    ]));
+    host.appendChild(
+      el("div", { class: "block" }, [
+        text(":: "),
+        head,
+        kv,
+        tags,
+      ])
+    );
   });
 };
 
@@ -241,8 +275,7 @@ const renderPubs = (items) => {
     renderProjects(data.projects || [], selected);
   };
 
-  const clear = document.getElementById("clearFilters");
-  clear.addEventListener("click", (e) => {
+  document.getElementById("clearFilters").addEventListener("click", (e) => {
     e.preventDefault();
     selected = [];
     setSkillsToURL(selected);
@@ -250,11 +283,12 @@ const renderPubs = (items) => {
     renderProjects(data.projects || [], selected);
   });
 
-  renderSkillsGrouped(data.skill_groups || [], selected, onToggle);
-  renderProjects(data.projects || [], selected);
   renderExperience(data.experience || []);
   renderEducation(data.education || []);
   renderPubs(data.publications || []);
+
+  renderSkillsGrouped(data.skill_groups || [], selected, onToggle);
+  renderProjects(data.projects || [], selected);
 
   window.addEventListener("popstate", () => {
     selected = getSelectedSkillsFromURL();

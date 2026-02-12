@@ -3,29 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Alberto Sánchez Pérez — NLP/GenAI</title>
-    <meta name="description" content="NLP/GenAI researcher + applied AI engineer. NAACL’25. Fortune 500 delivery." />
-
+    <title>Alberto Sanchez CV - NLP/GenAI</title>
+    <meta name="description" content="NLP/GenAI researcher + applied AI engineer. NAACL'25. Fortune 500 delivery." />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="wrap">
       <header>
-        <div class="ascii">┌──────────────────────────────────────────────────────────────────────────────┐</div>
-        <div class="ascii">│  alberto :: nlp/genai :: research ⇄ production                                │</div>
-        <div class="ascii">└──────────────────────────────────────────────────────────────────────────────┘</div>
-
         <div class="row row-top">
           <div>
             <div class="h1" id="name"></div>
             <div class="muted" id="headline"></div>
+          </br>
             <div class="muted" id="metaLine"></div>
           </div>
 
           <nav class="nav">
-            <a href="#cv">cv</a>
-            <a href="#projects">projects</a>
+            <a href="#experience">experience</a>
+            <a href="#education">education</a>
             <a href="#publications">publications</a>
+            <a href="#skills">skills</a>
             <a href="#contact">contact</a>
           </nav>
         </div>
@@ -40,17 +37,30 @@
           <span class="muted" id="accentInfo"></span>
         </div>
 
-        <div class="ascii">──────────────────────────────────────────────────────────────────────────────</div>
+        <div class="ascii"></br>──────────────────────────────────────────────────────────────────────────────</br></br></div>
       </header>
 
       <main>
+        <section id="experience">
+          <div class="h2">EXPERIENCE</div>
+          <div id="experienceList"></div>
+          <div class="ascii"></br>──────────────────────────────────────────────────────────────────────────────</br></br></div>
+        </section>
+
+        <section id="education">
+          <div class="h2">EDUCATION</div>
+          <div id="educationList"></div>
+          <div class="ascii"></br>──────────────────────────────────────────────────────────────────────────────</br></br></div>
+        </section>
+
+        <section id="publications">
+          <div class="h2">PUBLICATIONS</div>
+          <div id="pubList"></div>
+          <div class="ascii"></br>──────────────────────────────────────────────────────────────────────────────</br></br></div>
+        </section>
+
         <section id="skills">
-          <div class="h2">skills</div>
-          <div class="muted">
-            filter via url:
-            <span class="code">?skill=rag</span>
-            <span class="code">?skill=rag,agents</span>
-          </div>
+          <div class="h2">SKILLS</div>
 
           <div class="skills" id="skillsGroups"></div>
 
@@ -59,43 +69,18 @@
             <a href="#" id="clearFilters">clear</a>
           </div>
 
-          <div class="ascii">──────────────────────────────────────────────────────────────────────────────</div>
-        </section>
+          <div class="ascii"></br>──────────────────────────────────────────────────────────────────────────────</br></br></div>
 
-        <section id="projects">
-          <div class="h2">projects</div>
+          <div class="h2">PROJECTS</div>
+          <div class="muted">shown below are filtered by selected skills (AND logic)</div>
           <div id="projectList"></div>
-          <div class="ascii">──────────────────────────────────────────────────────────────────────────────</div>
-        </section>
-
-        <section id="cv">
-          <div class="h2">experience</div>
-          <div id="experienceList"></div>
-
-          <div class="ascii">──────────────────────────────────────────────────────────────────────────────</div>
-
-          <div class="h2">education</div>
-          <div id="educationList"></div>
-
-          <div class="ascii">──────────────────────────────────────────────────────────────────────────────</div>
-        </section>
-
-        <section id="publications">
-          <div class="h2">publications</div>
-          <div id="pubList"></div>
-          <div class="ascii">──────────────────────────────────────────────────────────────────────────────</div>
+          <div class="ascii"></br>──────────────────────────────────────────────────────────────────────────────</br></br></div>
         </section>
 
         <section id="contact">
-          <div class="h2">contact</div>
+          <div class="h2">CONTACT</div>
           <div class="muted" id="contactLine"></div>
-          <div class="muted">Prefer concrete technical messages + artifact links.</div>
         </section>
-
-        <footer>
-          <div class="ascii">──────────────────────────────────────────────────────────────────────────────</div>
-          <div class="muted">html + vanilla js + json :: random accent per refresh</div>
-        </footer>
       </main>
     </div>
 
