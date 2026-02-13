@@ -75,6 +75,12 @@ body {
 .h2 {
   margin: 14px 0 6px 0;
   text-transform: uppercase;
+  color: var(--accent);
+}
+
+.h3 {
+  margin: 14px 0 6px 0;
+  color: var(--accent);
 }
 
 /* bold for section headers and key labels */
@@ -157,7 +163,7 @@ a:hover::before, a:hover::after { color: var(--accent); }
 }
 
 .block-title {
-  font-family: var(--mono-title);
+  font-family: var(--mono-body);
   font-size: var(--fs);
   letter-spacing: 0.5px;
 }

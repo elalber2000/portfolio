@@ -4,10 +4,9 @@
     "headline": "NLP / GenAI Researcher & Applied AI Engineer",
     "location": "Madrid, Spain",
     "links": {
-      "email": "mailto:you@domain.com",
+      "email": "mailto:albertus200011@gmail.com",
       "github": "https://github.com/elalber2000",
-      "arxiv": "https://arxiv.org/abs/2503.11664",
-      "cv_pdf": "./CV_AlbertoSanchez_en.pdf"
+      "cv": "./CV_AlbertoSanchez_en.pdf"
     }
   },
   "profile": "Data Scientist and AI Engineer specialized in NLP and GenAI. I bridge applied research (NAACL'25, SEPLN'23) with industry delivery, leading Fortune 500 projects and owning end-to-end data/AI pipelines (ingestion, preprocessing, model tuning, deployment). Proficient in GenAI technologies, classic ML and MLOps.",
@@ -136,7 +135,7 @@
     {
       "venue": "SEPLN 2023",
       "role": "Co-author",
-      "title": "Data augmentation for named entity recognition using Wikidata (WidAug)",
+      "title": "Widaug. Data augmentation for named entity recognition using Wikidata",
       "links": {},
       "skills": ["NER", "Knowledge Graphs", "Synthetic Data"]
     }

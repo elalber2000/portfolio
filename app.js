@@ -1,9 +1,10 @@
 const ACCENTS = [
-  "#8EA2FF", // indigo
-  "#7EE6D7", // teal
-  "#F2C879", // amber
-  "#BCA7FF", // violet
-  "#A3FFB0"  // mint
+  "#f38ba8",
+  "#cba6f7",
+  "#fab387",
+  "#f9e2af",
+  "#a6e3a1",
+  "#74c7ec"
 ];
 
 const slug = (s) =>
@@ -139,7 +140,6 @@ const renderProjects = (projects, selected) => {
     const bullets = el("ul", { class: "bullets" }, (p.highlights || []).map((h) => el("li", {}, [text(h)])));
 
     const tags = el("div", { class: "tags" }, [
-      text("skills: "),
       ...(p.skills || []).map((t) => el("span", { class: "tag" }, [text(t)]))
     ]);
 
@@ -163,14 +163,13 @@ const renderExperience = (items) => {
 
   ordered.forEach((x) => {
     const head = el("div", { class: "block-head" }, [
-      el("div", { class: "block-title" }, [text(`${x.org} :: ${x.role}`)]),
-      el("div", { class: "block-meta" }, [text(`${x.location} · ${x.dates}`)])
+      el("div", { class: "block-title" }, [text(`${x.role} :: ${x.org}`)]),
+      el("div", { class: "block-meta" }, [text(`${x.location}  |  ${x.dates}`)])
     ]);
 
     const bullets = el("ul", { class: "bullets" }, (x.bullets || []).map((b) => el("li", {}, [text(b)])));
 
     const tags = el("div", { class: "tags" }, [
-      text("skills: "),
       ...(x.skills || []).map((t) => el("span", { class: "tag" }, [text(t)]))
     ]);
 
@@ -193,11 +192,11 @@ const renderEducation = (items) => {
 
   ordered.forEach((x) => {
     const head = el("div", { class: "block-head" }, [
-      el("div", { class: "block-title" }, [text(x.school)]),
-      el("div", { class: "block-meta" }, [text(`${x.location} · ${x.dates}`)])
+      el("div", { class: "block-title" }, [text(`${x.degree}`)]),
+      el("div", { class: "block-meta" }, [text(`${x.location}  |  ${x.dates}`)])
     ]);
 
-    const body = el("div", { class: "kv" }, [text(`degree: ${x.degree}`)]);
+    const body = el("div", { class: "kv" }, [text(x.school)]);
 
     host.appendChild(
       el("div", { class: "block" }, [
@@ -216,8 +215,8 @@ const renderPubs = (items) => {
   // publications are usually already ordered; leave as-is unless you add dates later
   items.forEach((p) => {
     const head = el("div", { class: "block-head" }, [
-      el("div", { class: "block-title" }, [text(`${p.venue} :: ${p.role}`)]),
-      el("div", { class: "block-meta" }, [text(p.title)])
+      el("div", { class: "block-title" }, [text(p.title)]),
+      el("div", { class: "block-meta" }, [text(`${p.venue} :: ${p.role}`)])
     ]);
 
     const links = [];
@@ -231,7 +230,6 @@ const renderPubs = (items) => {
     ]);
 
     const tags = el("div", { class: "tags" }, [
-      text("skills: "),
       ...(p.skills || []).map((t) => el("span", { class: "tag" }, [text(t)]))
     ]);
 
@@ -260,8 +258,7 @@ const renderPubs = (items) => {
   const links = data.person?.links || {};
   document.getElementById("linkEmail").href = links.email || "#";
   document.getElementById("linkGithub").href = links.github || "#";
-  document.getElementById("linkArxiv").href = links.arxiv || "#";
-  document.getElementById("linkCV").href = links.cv_pdf || "#";
+  document.getElementById("linkCV").href = links.cv || "#";
 
   document.getElementById("contactLine").textContent =
     `email: ${String(links.email || "").replace("mailto:", "")}  ::  github: ${links.github || ""}`;
