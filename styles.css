@@ -94,6 +94,10 @@ body {
   color: color-mix(in oklab, var(--fg) 92%, var(--muted));
 }
 
+.block-spacer {
+  height: 14px;
+}
+
 /* links: [link] with hover changing ONLY color */
 a {
   color: color-mix(in oklab, var(--fg) 90%, var(--muted));

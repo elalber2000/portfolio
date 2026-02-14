@@ -120,7 +120,7 @@ const renderProjects = (projects, selected) => {
     ? `filter: skill=${selected.join(",")} :: ${filtered.length}/${projects.length}`
     : `filter: none :: ${filtered.length}/${projects.length}`;
 
-  filtered.forEach((p) => {
+  filtered.forEach((p, i) => {
     const head = el("div", { class: "block-head" }, [
       el("div", { class: "block-title" }, [text(p.title)]),
       el("div", { class: "block-meta" }, [text(p.one_liner || "")])
@@ -133,7 +133,7 @@ const renderProjects = (projects, selected) => {
     if (p.links?.arxiv) links.push(el("a", { href: p.links.arxiv, target: "_blank", rel: "noreferrer" }, [text("arxiv")]));
 
     const kv = el("div", { class: "kv" }, [
-      text("links: "),
+      text(" "),
       ...links.reduce((acc, a, i) => (i ? acc.concat([text(" "), a]) : acc.concat([a])), [])
     ]);
 
@@ -144,14 +144,10 @@ const renderProjects = (projects, selected) => {
     ]);
 
     host.appendChild(
-      el("div", { class: "block" }, [
-        text(":: "),
-        head,
-        kv,
-        bullets,
-        tags,
-      ])
+      el("div", { class: "block" }, [text(":: "), head, kv, bullets, tags])
     );
+
+    if (i < filtered.length - 1) host.appendChild(el("div", { class: "block-spacer" }));
   });
 };
 
@@ -164,7 +160,7 @@ const renderExperience = (items) => {
   ordered.forEach((x) => {
     const head = el("div", { class: "block-head" }, [
       el("div", { class: "block-title" }, [text(`${x.role} :: ${x.org}`)]),
-      el("div", { class: "block-meta" }, [text(`${x.location}  |  ${x.dates}`)])
+      el("div", { class: "block-meta" }, [text(`${x.location}  ::  ${x.dates}`)])
     ]);
 
     const bullets = el("ul", { class: "bullets" }, (x.bullets || []).map((b) => el("li", {}, [text(b)])));
@@ -225,7 +221,7 @@ const renderPubs = (items) => {
     if (p.links?.code) links.push(el("a", { href: p.links.code, target: "_blank", rel: "noreferrer" }, [text("code")]));
 
     const kv = el("div", { class: "kv" }, [
-      text("links: "),
+      text(" "),
       ...links.reduce((acc, a, i) => (i ? acc.concat([text(" "), a]) : acc.concat([a])), [])
     ]);
 
@@ -258,10 +254,11 @@ const renderPubs = (items) => {
   const links = data.person?.links || {};
   document.getElementById("linkEmail").href = links.email || "#";
   document.getElementById("linkGithub").href = links.github || "#";
+  document.getElementById("linkLinkedin").href = links.linkedin || "#";
   document.getElementById("linkCV").href = links.cv || "#";
 
   document.getElementById("contactLine").textContent =
-    `email: ${String(links.email || "").replace("mailto:", "")}  ::  github: ${links.github || ""}`;
+    `email: ${String(links.email || "").replace("mailto:", "")}`;
 
   let selected = getSelectedSkillsFromURL();
 

@@ -6,60 +6,248 @@
     "links": {
       "email": "mailto:albertus200011@gmail.com",
       "github": "https://github.com/elalber2000",
-      "cv": "./CV_AlbertoSanchez_en.pdf"
+      "cv": "./CV_AlbertoSanchez_en.pdf",
+      "linkedin": "https://www.linkedin.com/in/alberto-s%C3%A1nchez-p%C3%A9rez-550a99177/"
     }
   },
   "profile": "Data Scientist and AI Engineer specialized in NLP and GenAI. I bridge applied research (NAACL'25, SEPLN'23) with industry delivery, leading Fortune 500 projects and owning end-to-end data/AI pipelines (ingestion, preprocessing, model tuning, deployment). Proficient in GenAI technologies, classic ML and MLOps.",
   "skill_groups": [
     {
-      "topic": "GenAI",
-      "skills": ["LLMs", "Fine-Tuning", "Hugging Face", "RAG", "Agents"]
+      "topic": "NLP",
+      "skills": [
+        "LLMs",
+        "Agents",
+        "Fine-Tuning",
+        "Hugging Face",
+        "RAG",
+        "Data Extraction",
+        "NER",
+        "Entity Matching",
+        "Synth Data",
+        "Knowledge Graphs"
+      ]
     },
     {
-      "topic": "ML/DL",
-      "skills": ["ML", "DL", "PyTorch", "Transformers", "NER"]
+      "topic": "Machine Learning / Deep Learning",
+      "skills": [
+        "PyTorch",
+        "Feature Engineering",
+        "Neural Networks",
+        "Time Series",
+        "Evaluation & Benchmarking",
+        "Tree-Based Models",
+        "Clustering"
+      ]
     },
     {
-      "topic": "MLops/Data",
-      "skills": ["SQL", "Alembic", "DBT", "CI/CD", "Git", "Docker", "AWS", "Airflow", "FastAPI"]
+      "topic": "Data / Distributed Systems",
+      "skills": [
+        "Data Scrapping",
+        "Data Processing",
+        "Data Architecture & Modeling",
+        "Distributed Systems",
+        "MapReduce",
+        "DBT",
+        "Alembic"
+      ]
+    },
+    {
+      "topic": "MLOps",
+      "skills": [
+        "CI/CD",
+        "Gitops",
+        "Docker",
+        "AWS",
+        "Airflow",
+        "FastAPI"
+      ]
+    },
+    {
+      "topic": "Soft Skills",
+      "skills": [
+        "Research",
+        "Mentoring & Leadership",
+        "Stakeholder Presentation & Communication",
+        "Agile Development"
+      ]
     }
   ],
   "projects": [
     {
+      "id": "agentic-insight-generation",
+      "title": "An LLM-Based Approach for Insight Generation",
+      "one_liner": "Published paper and industrially deployed agent-based system using LLMs to generate analytical insights from relational datasets.",
+      "links": {
+        "paper": "https://arxiv.org/abs/2503.11664"
+      },
+      "skills": [
+        "LLMs",
+        "Agents",
+        "Evaluation & Benchmarking",
+        "Research"
+      ],
+      "highlights": [
+        "Main-author paper published on NAACL 2025 and industrially deployed on scale for multiple Fortune 500 companies.",
+        "Agentic system for insight generation over relational data.",
+        "Deployed to production and reduced production pipeline costs by 99.6%."
+      ]
+    },
+    {
+      "id": "competitive-intelligence-platform",
+      "title": "Competitive Intelligence Platform",
+      "one_liner": "End-to-end intelligence platform covering P&L forecasting, market insights, and asset-buyer recommendations.",
+      "links": {},
+      "skills": [
+        "LLMs",
+        "Neural Networks",
+        "Time Series",
+        "Evaluation & Benchmarking",
+        "Data Scrapping",
+        "Data Processing",
+        "Data Architecture & Modeling",
+        "DBT",
+        "Alembic",
+        "CI/CD",
+        "Gitops",
+        "Docker",
+        "AWS",
+        "Airflow",
+        "FastAPI",
+        "Mentoring & Leadership",
+        "Stakeholder Presentation & Communication",
+        "Agile Development"
+      ],
+      "highlights": [
+        "Industrially deployed for multiple fortune 500 companies.",
+        "Multi-module intelligence app (P&L forecasting, market insights, asset-buyer recommendations).",
+        "Coordination and mentoring of an intern, presentation for internal and external C-level stakeholders.",
+        "Designed DB schema and orchestration to reduce runtime from ~60 minutes to under 1 minute."
+      ]
+    },
+    {
+      "id": "music-data-matcher",
+      "title": "Music Data Extraction and Matching",
+      "one_liner": "Large-scale LLM document extraction from music legal contracts with cross-source entity matching over relational DBs.",
+      "links": {},
+      "skills": [
+        "LLMs",
+        "Data Extraction",
+        "Entity Matching",
+        "Data Processing",
+        "Data Architecture & Modeling",
+        "Distributed Systems",
+        "DBT",
+        "CI/CD",
+        "Gitops",
+        "AWS",
+        "Airflow",
+        "Stakeholder Presentation & Communication",
+        "Agile Development"
+      ],
+      "highlights": [
+        "Industrially deployed for a 'Big Three' Music Record company.",
+        "Data modelling and massive data extraction over a massive number of artist contracts.",
+        "Linking across multiple sources on fuzzy multi-granular entities."
+      ]
+    },
+    {
+      "id": "widaug-kg-synthetic-data",
+      "title": "WidAug: Knowledge-Graph Synthetic Data for NER",
+      "one_liner": "Synthetic data generation from knowledge graphs to improve low-resource NER performance.",
+      "links": {
+        "github": "https://github.com/oeg-upm/widaug",
+        "paper": "http://journal.sepln.org/sepln/ojs/ojs/index.php/pln/article/view/6486"
+      },
+      "skills": [
+        "Fine-Tuning",
+        "Hugging Face",
+        "NER",
+        "Synth Data",
+        "Knowledge Graphs",
+        "Evaluation & Benchmarking",
+        "Research"
+      ],
+      "highlights": [
+        "Co-authored paper published on SEPLN 2023.",
+        "KG-based synthetic data generation to improve low-resource NER.",
+        "Boosted F1 by ~20% for low-resource NER settings."
+      ]
+    },
+    {
       "id": "stopslop",
       "title": "StopSlop",
-      "one_liner": "Chrome extension for low-quality site detection; real-time classification.",
+      "one_liner": "Chrome extension that flags low-quality/slop websites using an ultra-lightweight (<10KB) on-device classifier.",
       "links": {
-        "repo": "https://github.com/elalber2000/stop_slop"
+        "repo": "https://github.com/elalber2000/stop_slop",
+        "demo": "https://huggingface.co/spaces/elalber2000/stop-slop",
+        "blog": "https://parrotsbasilisks.substack.com/p/stopslop-detecting-slop-with-a-5kb",
+        "dataset": "https://huggingface.co/datasets/elalber2000/stop-slop-data"
       },
-      "skills": ["ML", "DL", "Python", "Web Scraping"],
+      "skills": [
+        "NLP",
+        "Neural Networks",
+        "Data Scrapping",
+        "Data Processing"
+      ],
       "highlights": [
-        "Automated web scraping feeding a real-time classifier.",
-        "Custom hyper-efficient FastText-like implementation in NumPy for low-latency inference."
+        "Built a custom slop vs non-slop dataset by scraping websites by domain.",
+        "Implemented a custom NumPy model (fasttext vocabulary + custom features linear classifier).",
+        "Used DL training techniques (lasso loss, dropout, gradient clipping).",
+        "Heavy feature prunning, numerical optimization and retraining for ultra-light performance.",
+        "Shipped the full inference pipeline in JavaScript for a Chrome extension"
       ]
     },
     {
       "id": "mini-snowflake",
-      "title": "mini_snowflake",
-      "one_liner": "Warehouse-style mini system (engineering proof repo).",
+      "title": "MiniSnowflake",
+      "one_liner": "Lightweight analytical SQL engine with sharded storage and map-reduce query execution.",
       "links": {
         "repo": "https://github.com/elalber2000/mini_snowflake"
       },
-      "skills": ["SQL", "Data Engineering", "Pipelines"],
+      "skills": [
+        "Data Engineering",
+        "Distributed Systems",
+        "MapReduce"
+      ],
       "highlights": [
-        "Systems-oriented build emphasizing clean data flows and queryable structure."
+        "Custom analytical SQL engine with sharded storage using map-reduce",
+        "Custom parser, planner, and orchestrator (round-robin scheduler)",
+        "DuckDB workers for local execution",
+        "FastAPI coordinator with Uvicorn"
       ]
     },
     {
-      "id": "naacl-2025-agents",
-      "title": "Agentic Insight Generation over Relational Data (NAACL'25)",
-      "one_liner": "LLM+agent approach to generate analysis insights from relational databases; productionized.",
-      "links": {
-        "arxiv": "https://arxiv.org/abs/2503.11664"
-      },
-      "skills": ["Agents", "LLMs", "SQL"],
+      "id": "mapreduce-doc-processing",
+      "title": "MapReduce Document Processing",
+      "one_liner": "Redesigned document-processing from RAG-style flow to a MapReduce architecture for reliability and scalability.",
+      "links": {},
+      "skills": [
+        "LLMs",
+        "RAG",
+        "MapReduce",
+        "Stakeholder Presentation & Communication"
+      ],
       "highlights": [
-        "Deployed to production; reduced operational costs by 99.6% on a production pipeline."
+        "Replaced a RAG-based approach with a MapReduce-style design to improve reliability and scalability of document processing.",
+        "Hardened pipeline execution for large document volumes and repeatable processing runs.",
+        "Presentation to relevant C-level stakeholders."
+      ]
+    },
+    {
+      "id": "smarterp",
+      "title": "SmarTerp",
+      "one_liner": "Joint NER and machine translation system optimized for low-latency applications and cost efficiency.",
+      "links": {
+        "web": "https://www.eitdigital.eu/fileadmin/2021/innovation-factory/new/digital-tech/EIT-Digital-Factsheet-Smarterp.pdf"
+      },
+      "skills": [
+        "Hugging Face",
+        "NER",
+        "Evaluation & Benchmarking"
+      ],
+      "highlights": [
+        "Built a combined NER and machine translation system targeting low-latency application requirements.",
+        "Reduced operating costs by ~40%."
       ]
     }
   ],
@@ -72,7 +260,11 @@
       "bullets": [
         "Delivered GenAI features for Fortune 500 clients: large-scale LLM document extraction for legal contracts and entity matching across data sources."
       ],
-      "skills": ["LLMs", "Information Extraction", "Data Engineering"]
+      "skills": [
+        "LLMs",
+        "Information Extraction",
+        "Data Engineering"
+      ]
     },
     {
       "org": "Aily Labs",
@@ -84,7 +276,15 @@
         "Led development of a Competitive Intelligence app (P&L forecasting, market insights, asset-buy recommendations); database and pipelines design and orchestration, reducing runtime from 60 minutes to under 1 minute.",
         "Mentored an intern, coordinated sprints and code reviews, and regularly presented progress to C-level stakeholders."
       ],
-      "skills": ["RAG", "Data Engineering", "SQL", "DBT", "Airflow", "Docker", "CI/CD"]
+      "skills": [
+        "RAG",
+        "Data Engineering",
+        "SQL",
+        "DBT",
+        "Airflow",
+        "Docker",
+        "CI/CD"
+      ]
     },
     {
       "org": "Aily Labs",
@@ -94,7 +294,11 @@
       "bullets": [
         "Main author of NAACL 2025 paper on using agent-based systems to generate insights from relational databases; deployed to production and reduced operational costs by 99.6% on a production pipeline."
       ],
-      "skills": ["Agents", "LLMs", "SQL"]
+      "skills": [
+        "Agents",
+        "LLMs",
+        "SQL"
+      ]
     },
     {
       "org": "Ontology Engineering Group (UPM)",
@@ -105,7 +309,11 @@
         "Co-authored synthetic data generation from KG data (WidAug), boosting F1 by 20% for low-resource NER.",
         "Developed a combined NER + machine translation system for low-latency applications, reducing costs by 40%."
       ],
-      "skills": ["Knowledge Graphs", "Synthetic Data", "NER"]
+      "skills": [
+        "Knowledge Graphs",
+        "Synthetic Data",
+        "NER"
+      ]
     }
   ],
   "education": [
@@ -130,14 +338,22 @@
       "links": {
         "arxiv": "https://arxiv.org/abs/2503.11664"
       },
-      "skills": ["Agents", "LLMs", "SQL"]
+      "skills": [
+        "Agents",
+        "LLMs",
+        "SQL"
+      ]
     },
     {
       "venue": "SEPLN 2023",
       "role": "Co-author",
       "title": "Widaug. Data augmentation for named entity recognition using Wikidata",
       "links": {},
-      "skills": ["NER", "Knowledge Graphs", "Synthetic Data"]
+      "skills": [
+        "NER",
+        "Knowledge Graphs",
+        "Synthetic Data"
+      ]
     }
   ]
 }
