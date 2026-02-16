@@ -84,7 +84,9 @@
         "LLMs",
         "Agents",
         "Evaluation & Benchmarking",
-        "Research"
+        "AWS",
+        "Research",
+        "Stakeholder Presentation & Communication"
       ],
       "highlights": [
         "Main-author paper published on NAACL 2025 and industrially deployed on scale for multiple Fortune 500 companies.",
@@ -136,6 +138,7 @@
         "Data Processing",
         "Data Architecture & Modeling",
         "Distributed Systems",
+        "MapReduce",
         "DBT",
         "CI/CD",
         "Gitops",
@@ -165,7 +168,8 @@
         "Synth Data",
         "Knowledge Graphs",
         "Evaluation & Benchmarking",
-        "Research"
+        "Research",
+        "Open Source"
       ],
       "highlights": [
         "Co-authored paper published on SEPLN 2023.",
@@ -185,9 +189,11 @@
       },
       "skills": [
         "NLP",
+        "Feature Engineering",
         "Neural Networks",
         "Data Scrapping",
-        "Data Processing"
+        "Data Processing",
+        "Open Source"
       ],
       "highlights": [
         "Built a custom slop vs non-slop dataset by scraping websites by domain.",
@@ -207,7 +213,10 @@
       "skills": [
         "Data Engineering",
         "Distributed Systems",
-        "MapReduce"
+        "MapReduce",
+        "Docker",
+        "FastAPI",
+        "Open Source"
       ],
       "highlights": [
         "Custom analytical SQL engine with sharded storage using map-reduce",
@@ -257,6 +266,9 @@
       "location": "Madrid, Spain",
       "role": "Mid Data Scientist",
       "dates": "Aug 2025 - Present",
+      "project_ids": [
+        "music-data-matcher"
+      ],
       "bullets": [
         "Delivered GenAI features for Fortune 500 clients: large-scale LLM document extraction for legal contracts and entity matching across data sources."
       ],
@@ -271,6 +283,10 @@
       "location": "Madrid, Spain",
       "role": "Junior Data Scientist",
       "dates": "Sep 2024 - Aug 2025",
+      "project_ids": [
+        "mapreduce-doc-processing",
+        "competitive-intelligence-platform"
+      ],
       "bullets": [
         "Designed procurement document-processing pipelines, replacing RAG approaches with a MapReduce design that improved reliability and scalability.",
         "Led development of a Competitive Intelligence app (P&L forecasting, market insights, asset-buy recommendations); database and pipelines design and orchestration, reducing runtime from 60 minutes to under 1 minute.",
@@ -291,6 +307,9 @@
       "location": "Madrid, Spain",
       "role": "Research Assistant",
       "dates": "Mar 2024 - Sep 2024",
+      "project_ids": [
+        "agentic-insight-generation"
+      ],
       "bullets": [
         "Main author of NAACL 2025 paper on using agent-based systems to generate insights from relational databases; deployed to production and reduced operational costs by 99.6% on a production pipeline."
       ],
@@ -305,6 +324,10 @@
       "location": "Madrid, Spain",
       "role": "Research Assistant",
       "dates": "Sep 2021 - Jul 2022",
+      "project_ids": [
+        "widaug-kg-synthetic-data",
+        "smarterp"
+      ],
       "bullets": [
         "Co-authored synthetic data generation from KG data (WidAug), boosting F1 by 20% for low-resource NER.",
         "Developed a combined NER + machine translation system for low-latency applications, reducing costs by 40%."
@@ -335,6 +358,9 @@
       "venue": "NAACL 2025",
       "role": "Main author",
       "title": "An LLM-Based Approach for Insight Generation in Data Analysis",
+      "project_ids": [
+        "agentic-insight-generation"
+      ],
       "links": {
         "arxiv": "https://arxiv.org/abs/2503.11664"
       },
@@ -348,6 +374,9 @@
       "venue": "SEPLN 2023",
       "role": "Co-author",
       "title": "Widaug. Data augmentation for named entity recognition using Wikidata",
+      "project_ids": [
+        "widaug-kg-synthetic-data"
+      ],
       "links": {},
       "skills": [
         "NER",

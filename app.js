@@ -72,6 +72,28 @@ const sortLatestFirst = (items, key) => {
   return arr.sort((a, b) => parseEndYear(b[key]) - parseEndYear(a[key]));
 };
 
+/* ---- project link helpers ---- */
+const indexProjectsById = (projects) => {
+  const m = new Map();
+  (projects || []).forEach((p) => {
+    if (p?.id) m.set(p.id, p);
+  });
+  return m;
+};
+
+const renderProjectLinksLine = (project_ids, projectById) => {
+  const ids = Array.isArray(project_ids) ? project_ids : [];
+  const items = ids
+    .map((id) => {
+      const p = projectById.get(id);
+      if (!p) return null;
+      return el("div", {}, [text("- "), el("a", { href: `#project-${p.id}` }, [text(p.title)])]);
+    })
+    .filter(Boolean);
+
+  return el("div", { class: "kv" }, items);
+};
+
 const renderSkillsGrouped = (groups, selected, onToggle) => {
   const host = document.getElementById("skillsGroups");
   host.innerHTML = "";
@@ -131,6 +153,10 @@ const renderProjects = (projects, selected) => {
     if (p.links?.demo) links.push(el("a", { href: p.links.demo, target: "_blank", rel: "noreferrer" }, [text("demo")]));
     if (p.links?.writeup) links.push(el("a", { href: p.links.writeup, target: "_blank", rel: "noreferrer" }, [text("writeup")]));
     if (p.links?.arxiv) links.push(el("a", { href: p.links.arxiv, target: "_blank", rel: "noreferrer" }, [text("arxiv")]));
+    if (p.links?.paper) links.push(el("a", { href: p.links.paper, target: "_blank", rel: "noreferrer" }, [text("paper")]));
+    if (p.links?.blog) links.push(el("a", { href: p.links.blog, target: "_blank", rel: "noreferrer" }, [text("blog")]));
+    if (p.links?.dataset) links.push(el("a", { href: p.links.dataset, target: "_blank", rel: "noreferrer" }, [text("dataset")]));
+    if (p.links?.web) links.push(el("a", { href: p.links.web, target: "_blank", rel: "noreferrer" }, [text("web")]));
 
     const kv = el("div", { class: "kv" }, [
       text(" "),
@@ -144,14 +170,14 @@ const renderProjects = (projects, selected) => {
     ]);
 
     host.appendChild(
-      el("div", { class: "block" }, [text(":: "), head, kv, bullets, tags])
+      el("div", { class: "block", id: `project-${p.id}` }, [text(":: "), head, kv, bullets, tags])
     );
 
     if (i < filtered.length - 1) host.appendChild(el("div", { class: "block-spacer" }));
   });
 };
 
-const renderExperience = (items) => {
+const renderExperience = (items, projectById) => {
   const host = document.getElementById("experienceList");
   host.innerHTML = "";
 
@@ -163,18 +189,13 @@ const renderExperience = (items) => {
       el("div", { class: "block-meta" }, [text(`${x.location}  ::  ${x.dates}`)])
     ]);
 
-    const bullets = el("ul", { class: "bullets" }, (x.bullets || []).map((b) => el("li", {}, [text(b)])));
-
-    const tags = el("div", { class: "tags" }, [
-      ...(x.skills || []).map((t) => el("span", { class: "tag" }, [text(t)]))
-    ]);
+    const projLine = renderProjectLinksLine(x.project_ids, projectById);
 
     host.appendChild(
       el("div", { class: "block" }, [
         text(":: "),
         head,
-        bullets,
-        tags,
+        projLine
       ])
     );
   });
@@ -204,37 +225,26 @@ const renderEducation = (items) => {
   });
 };
 
-const renderPubs = (items) => {
+const renderPubs = (items, projectById) => {
   const host = document.getElementById("pubList");
   host.innerHTML = "";
 
-  // publications are usually already ordered; leave as-is unless you add dates later
   items.forEach((p) => {
+    const firstProjectId = Array.isArray(p.project_ids) ? p.project_ids[0] : null;
+    const target = firstProjectId && projectById.get(firstProjectId)
+      ? `#project-${firstProjectId}`
+      : "#projects";
+
     const head = el("div", { class: "block-head" }, [
-      el("div", { class: "block-title" }, [text(p.title)]),
+      // title as [link] to the project section
+      el("div", { class: "block-title" }, [el("a", { href: target }, [text(p.title)])]),
       el("div", { class: "block-meta" }, [text(`${p.venue} :: ${p.role}`)])
-    ]);
-
-    const links = [];
-    if (p.links?.arxiv) links.push(el("a", { href: p.links.arxiv, target: "_blank", rel: "noreferrer" }, [text("arxiv")]));
-    if (p.links?.pdf) links.push(el("a", { href: p.links.pdf, target: "_blank", rel: "noreferrer" }, [text("pdf")]));
-    if (p.links?.code) links.push(el("a", { href: p.links.code, target: "_blank", rel: "noreferrer" }, [text("code")]));
-
-    const kv = el("div", { class: "kv" }, [
-      text(" "),
-      ...links.reduce((acc, a, i) => (i ? acc.concat([text(" "), a]) : acc.concat([a])), [])
-    ]);
-
-    const tags = el("div", { class: "tags" }, [
-      ...(p.skills || []).map((t) => el("span", { class: "tag" }, [text(t)]))
     ]);
 
     host.appendChild(
       el("div", { class: "block" }, [
         text(":: "),
-        head,
-        kv,
-        tags,
+        head
       ])
     );
   });
@@ -260,6 +270,8 @@ const renderPubs = (items) => {
   document.getElementById("contactLine").textContent =
     `email: ${String(links.email || "").replace("mailto:", "")}`;
 
+  const projectById = indexProjectsById(data.projects || []);
+
   let selected = getSelectedSkillsFromURL();
 
   const onToggle = (s) => {
@@ -277,9 +289,9 @@ const renderPubs = (items) => {
     renderProjects(data.projects || [], selected);
   });
 
-  renderExperience(data.experience || []);
+  renderExperience(data.experience || [], projectById);
   renderEducation(data.education || []);
-  renderPubs(data.publications || []);
+  renderPubs(data.publications || [], projectById);
 
   renderSkillsGrouped(data.skill_groups || [], selected, onToggle);
   renderProjects(data.projects || [], selected);
